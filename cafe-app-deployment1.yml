@@ -23,4 +23,3 @@ spec:
         #rollingupdate:
         # maxSurge: 1
         #maxUnavailable: 1
-~
