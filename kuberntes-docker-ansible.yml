@@ -1,0 +1,9 @@
+---
+- hosts: all
+  become: yes
+  user: root
+  tasks:
+    - name: Deployment
+      command: kubectl apply -f cafe-app-deployment1.yml
+    - name: service
+      command: kubectl apply -f cafe-app-service.yml
