@@ -1,0 +1,19 @@
+---
+- hosts: all
+  name: root
+  become: yes
+  tasks:
+    - name: clone repository
+      git:
+        repo: https://github.com/ninadkharol/Cafe-App.git
+        dest: /opt/docker/Cafe-App
+        clone: yes
+        update: yes
+    - name: create docker image
+      command: docker build -t cafe-app:latest /opt/docker/Cafe-App
+      args:
+        chdir: /opt/docker/
+    - name: craete tag and push image on docker hub
+      command: docker tag cafe-app:latest shivakharol/cafe-app:v1
+    - name: push iamge docker
+      command: docker push shivakharol/cafe-app:v1
