@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mylab-cafe-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: cafe-app
+  template:
+    metadata:
+      labels:
+        app: cafe-app
+    spec:
+      containers:
+      - name: cafe-app
+        image: shivakharol/cafe-app
+        ports:
+        - containerPort: 80
+        imagePullPolicy: Always
+        # strategy:
+        #type: RollingUpdate
+        #rollingupdate:
+        # maxSurge: 1
+        #maxUnavailable: 1
+~
